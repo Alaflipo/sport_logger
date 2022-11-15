@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'sport_logger.urls'
+ROOT_URLCONF = 'backend_manager.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sport_logger.wsgi.application'
+WSGI_APPLICATION = 'backend_manager.wsgi.application'
 
 
 # Database
