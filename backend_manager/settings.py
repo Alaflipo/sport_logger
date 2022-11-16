@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sport.apps.SportConfig',
     'rest_framework',
-    # Cors to let fetch from different url/port
+    # Cors to let fetch from different url/port for commit
     'corsheaders',
 ]
 
