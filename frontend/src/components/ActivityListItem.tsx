@@ -8,7 +8,6 @@ interface ActivityListItemProps {
 
 const ActivityListItem = (props: ActivityListItemProps) => {
 
-
     return (
         <Link to={`/activ/${props.activity.id}`}>
             <h3>{props.activity.name} ({props.activity.type})</h3>

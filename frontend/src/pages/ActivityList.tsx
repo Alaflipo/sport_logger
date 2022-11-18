@@ -17,6 +17,8 @@ const ActivityList = () => {
         setActivities(data)
     }
 
+    console.log('hellooooo wroooonnngg')
+
     return (
         <div>
             <div className='notes-list'>

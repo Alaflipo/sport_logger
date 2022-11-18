@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Activity
-from .serializers import ActivitySerializer
+from .models import Activity, User
+from .serializers import ActivitySerializer, UserSerializer
 
 # Create your views here.
 
@@ -25,7 +25,16 @@ def getRoutes(request):
             'description': 'returns a single activity '
         },
         {
-            'hello': 'lol'
+            'EndPoint': '/users/',
+            'method': 'GET',
+            'body': None,
+            'description': 'returns an array of users'
+        },
+        {
+            'EndPoint': '/users/id',
+            'method': 'GET',
+            'body': None,
+            'description': 'returns a single user'
         }
     ]
     # return HttpResponse("Hello world, You're at the polls index")
@@ -45,4 +54,20 @@ def get_activity(request, pk):
     activity = Activity.objects.get(id=pk)
     # many means; are we going to pass in one object or multiple?
     serializer = ActivitySerializer(activity, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_users(request):
+    users = User.objects.all()
+    # many means; are we going to pass in one object or multiple?
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_user(request, pk):
+    user = User.objects.get(id=pk)
+    # many means; are we going to pass in one object or multiple?
+    serializer = UserSerializer(user, many=False)
     return Response(serializer.data)

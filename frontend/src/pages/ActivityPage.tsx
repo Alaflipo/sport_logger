@@ -10,7 +10,7 @@ export interface ActivityData {
 
 // props: ActivityDisplayProps
 
-const ActivityDisplay = () => {
+const ActivityPage = () => {
 
     let { activityId } = useParams() // to get params out 
     let [activity, setActivity] = useState<ActivityData | null>(null)
@@ -25,6 +25,8 @@ const ActivityDisplay = () => {
         setActivity(data);
     }
 
+    console.log("hellloooooooooo")
+
     return (
         <div>
             <h3>Name: {activity?.name}</h3>
@@ -35,4 +37,4 @@ const ActivityDisplay = () => {
 }
 
 
-export default ActivityDisplay 
+export default ActivityPage 

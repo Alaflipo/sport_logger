@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Activity
+from .models import Activity, User
 
 
 # A serializer converts a python model object to a json response
@@ -7,5 +7,12 @@ from .models import Activity
 class ActivitySerializer(ModelSerializer):
     class Meta:
         model = Activity
+        # this can also be something like ['name', 'description']
+        fields = '__all__'
+
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = User
         # this can also be something like ['name', 'description']
         fields = '__all__'
