@@ -1,3 +1,4 @@
+import { Stack } from '@mui/material'
 import React, {useState, useEffect} from 'react'
 import ActivityListItem from '../components/ActivityListItem'
 import { ActivityData } from './ActivityPage'
@@ -22,9 +23,12 @@ const ActivityList = () => {
     return (
         <div>
             <div className='notes-list'>
+                <Stack>
                 {activities.map((activity: ActivityData, index) => (
                     <ActivityListItem key={index} activity={activity}/>
                 ))}
+                </Stack>
+                
             </div>
         </div>
     ); 

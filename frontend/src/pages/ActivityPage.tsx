@@ -1,5 +1,6 @@
+import { Button } from '@mui/material';
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export interface ActivityData {
     id: number;
@@ -32,6 +33,11 @@ const ActivityPage = () => {
             <h3>Name: {activity?.name}</h3>
             <p>Type of sport: {activity?.type}</p>
             <p>Description: {activity?.description}</p>
+            <Link to={`/activ`} style={{textDecoration: 'none'}}>  
+                <Button variant='contained'>
+                    Go back
+                </Button>
+            </Link>
         </div>
     )
 }
