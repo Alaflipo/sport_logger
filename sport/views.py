@@ -57,6 +57,37 @@ def get_activity(request, pk):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+def add_activity(request):
+    data = request.data
+    activity = Activity.objects.create(
+        name=data['name'],
+        description=data['description'],
+        type=data['type'],
+    )
+    serializer = ActivitySerializer(activity, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+def edit_activity(request, pk):
+    data = request.data
+    activity = Activity.objects.get(id=pk)
+    serializer = ActivitySerializer(instance=activity, data=data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def delete_activity(request, pk):
+    activity = Activity.objects.get(id=pk)
+    activity.delete()
+    return Response('activity was deleted!')
+
+
 @api_view(['GET'])
 def get_users(request):
     users = User.objects.all()
