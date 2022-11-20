@@ -89,8 +89,8 @@ DATABASES = {
         'NAME': 'sport',
         'USER': 'root',
         'PASSWORD': 'Achter30?',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': 'mysql.server',
+        'PORT': '',
     }
 }
 
