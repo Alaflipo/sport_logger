@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2o@a1m-82mjkc7x$rqz+amcxh)&r%a4o75w3m)ds1brfm5bmm5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['sports-logger.herokuapp.com', '127.0.0.1']
 
