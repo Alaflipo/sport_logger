@@ -86,8 +86,8 @@ WSGI_APPLICATION = 'backend_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sport',
-        'USER': 'root',
+        'NAME': 'morrisboers$sport',
+        'USER': 'morrisboers',
         'PASSWORD': 'Achter30?',
         'HOST': 'morrisboers.mysql.pythonanywhere-services.com',
         'PORT': '',
