@@ -13,6 +13,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
+import { url } from "../constants";
 
 export interface ActivityData {
     id?: number;
@@ -136,7 +137,7 @@ const ActivityPage = () => {
     };
 
     let deleteActivity = async () => {
-        fetch(`/api/activ/${activityId}/delete`, {
+        fetch(`api/activ/${activityId}/delete`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -145,7 +146,7 @@ const ActivityPage = () => {
     };
 
     let addActivity = async () => {
-        fetch("/api/activ/add", {
+        fetch(`/api/activ/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -158,12 +159,11 @@ const ActivityPage = () => {
         fetch(`/api/activ/${activityId}/edit`, {
             method: "PUT",
             headers: {
+                Accept: "application/json",
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newActivity),
-        })
-            .then((response) => response.json())
-            .then((data) => setActivity(data));
+        }).then(() => navigate("/activ"));
     };
 
     let handleUpdate = () => {

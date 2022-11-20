@@ -2,6 +2,7 @@ import { Button, Stack } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ActivityListItem from "../components/ActivityListItem";
+import { url } from "../constants";
 import { ActivityData } from "./ActivityPage";
 
 const ActivityList = () => {
@@ -12,7 +13,11 @@ const ActivityList = () => {
     }, []);
 
     let getActivities = async () => {
-        let response = await fetch("/api/activ/");
+        let response = await fetch("api/activ", {
+            headers: {
+                accepts: "application/json",
+            },
+        });
         let data = await response.json();
         console.log(data);
         setActivities(data);
