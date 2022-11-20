@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'sport',
         'USER': 'root',
         'PASSWORD': 'Achter30?',
-        'HOST': 'username.mysql.pythonanywhere-services.com',
+        'HOST': 'morrisboers.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
