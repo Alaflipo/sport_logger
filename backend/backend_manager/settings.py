@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2o@a1m-82mjkc7x$rqz+amcxh)&r%a4o75w3m)ds1brfm5bmm5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sports-logger.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
