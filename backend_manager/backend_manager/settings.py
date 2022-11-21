@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+deploy = False
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,9 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2o@a1m-82mjkc7x$rqz+amcxh)&r%a4o75w3m)ds1brfm5bmm5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = (not deploy)
 
-ALLOWED_HOSTS = ['morrisboers.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = []
+
+if (deploy):
+    ALLOWED_HOSTS = ['morrisboers.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -86,13 +91,25 @@ WSGI_APPLICATION = 'backend_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'morrisboers$sport',
-        'USER': 'morrisboers',
+        'NAME': 'sport',
+        'USER': 'root',
         'PASSWORD': 'Achter30?',
-        'HOST': 'morrisboers.mysql.pythonanywhere-services.com',
-        'PORT': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
+
+if (deploy):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'morrisboers$sport',
+            'USER': 'morrisboers',
+            'PASSWORD': 'Achter30?',
+            'HOST': 'morrisboers.mysql.pythonanywhere-services.com',
+            'PORT': '',
+        }
+    }
 
 
 # Password validation
