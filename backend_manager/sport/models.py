@@ -18,6 +18,8 @@ class Activity(models.Model):
 
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
+    seat_setting = models.IntegerField(default=1, blank=True)
+    other_settings = models.CharField(max_length=200, blank=True)
     type = models.CharField(
         max_length=100,
         choices=Type.choices,
@@ -40,7 +42,6 @@ class PersonalActivity(models.Model):
     person = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField('activity date')
     weight = models.FloatField(default=0)
-    seat_setting = models.IntegerField(default=1)
 
     def trained_recently(self):
         return self.date >= timezone.now() - datetime.timedelta(days=1)

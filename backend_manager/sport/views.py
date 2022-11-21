@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Activity, User
-from .serializers import ActivitySerializer, UserSerializer
+from .models import Activity, User, PersonalActivity
+from .serializers import ActivitySerializer, UserSerializer, PersonalActivitySerializer
 
 # Create your views here.
 
@@ -40,6 +40,62 @@ def getRoutes(request):
     # return HttpResponse("Hello world, You're at the polls index")
     return Response(routes)
 
+#################################################
+#              PersonalActivities               #
+#################################################
+
+
+@api_view(['GET'])
+def get_personal_activities(request):
+    personal_activities = PersonalActivity.objects.all()
+    # many means; are we going to pass in one object or multiple?
+    serializer = PersonalActivitySerializer(personal_activities, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_personal_activity(request, pk):
+    personal_activity = PersonalActivity.objects.get(id=pk)
+    # many means; are we going to pass in one object or multiple?
+    serializer = PersonalActivitySerializer(personal_activity, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def add_personal_activity(request):
+    data = request.data
+    activity = PersonalActivity.objects.create(
+        person=data['person'],
+        activity=data['activity'],
+        weight=data['weight'],
+    )
+    serializer = PersonalActivitySerializer(activity, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+def edit_personal_activity(request, pk):
+    data = request.data
+    personal_activity = PersonalActivity.objects.get(id=pk)
+    serializer = PersonalActivitySerializer(
+        instance=personal_activity, data=data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def delete_personal_activity(request, pk):
+    personal_activity = PersonalActivity.objects.get(id=pk)
+    personal_activity.delete()
+    return Response('activity was deleted!')
+
+#################################################
+#                   Activities                  #
+#################################################
+
 
 @api_view(['GET'])
 def get_activities(request):
@@ -73,6 +129,7 @@ def add_activity(request):
 def edit_activity(request, pk):
     data = request.data
     activity = Activity.objects.get(id=pk)
+
     serializer = ActivitySerializer(instance=activity, data=data)
 
     if serializer.is_valid():
@@ -87,6 +144,10 @@ def delete_activity(request, pk):
     activity.delete()
     return Response('activity was deleted!')
 
+
+#################################################
+#                     Users                     #
+#################################################
 
 @api_view(['GET'])
 def get_users(request):
