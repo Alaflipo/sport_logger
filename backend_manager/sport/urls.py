@@ -12,6 +12,8 @@ urlpatterns = [
     path('pactiv/<str:pk>/delete', views.delete_personal_activity,
          name='delete-personal-activity'),
     path('pactiv/<str:pk>', views.get_personal_activity, name='personal-activity'),
+    path('pactiv/filter/<str:activ>/<str:user>', views.get_personal_activity_user,
+         name='personal-activity-filter-user'),
 
     path('activ/', views.get_activities, name='activities'),
     path('activ/add', views.add_activity, name='add-activity'),

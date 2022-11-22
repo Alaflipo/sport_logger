@@ -13,28 +13,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
-import { url } from "../constants";
-
-export interface ActivityData {
-    id?: number;
-    name: string;
-    description: string;
-    type: string;
-}
-
-const emptyActivityData: ActivityData = {
-    name: "",
-    description: "",
-    type: "Shoulders",
-};
-
-export const SportTypes = [
-    { label: "Shoulders" },
-    { label: "Chest" },
-    { label: "Biceps" },
-    { label: "Back" },
-    { label: "Belly" },
-];
+import { ActivityData, emptyActivityData, SportTypes } from "../DataTypes";
 
 const RowStyle = {
     width: "350px",
@@ -156,6 +135,7 @@ const ActivityPage = () => {
     };
 
     let updateActivity = async () => {
+        console.log(newActivity);
         fetch(`/api/activ/${activityId}/edit`, {
             method: "PUT",
             headers: {

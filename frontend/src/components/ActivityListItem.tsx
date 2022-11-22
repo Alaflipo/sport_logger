@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ActivityData } from "../pages/ActivityPage";
+import { ActivityData } from "../DataTypes";
 
 // Styling
 import CSS from "csstype";
-import {
-    Box,
-    Button,
-    Divider,
-    Grid,
-    IconButton,
-    Stack,
-    SxProps,
-    Typography,
-} from "@mui/material";
-import { textAlign } from "@mui/system";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Box, Button, Divider, SxProps, Typography } from "@mui/material";
 
 const ItemContainer: CSS.Properties = {
     // width: '300px',

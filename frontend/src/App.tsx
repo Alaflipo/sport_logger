@@ -7,6 +7,10 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import HomeScreen from "./pages/Home";
 import ActivityPage from "./pages/ActivityPage";
 import { Box, createTheme, SxProps, ThemeProvider } from "@mui/material";
+import PersonalActivityList from "./pages/PersonalActivityList";
+import PersonalActivityPage from "./pages/PersonalActivityPage";
+import ChooseSport from "./pages/sportlogger/ChooseSport";
+import LogActivityPage from "./pages/sportlogger/LogActivity";
 
 const HeaderStyling: SxProps = {
     minHeight: "20vh",
@@ -50,6 +54,20 @@ function App() {
                             <Route
                                 path={":activityId"}
                                 element={<ActivityPage />}
+                            />
+                        </Route>
+                        <Route path="/pactiv">
+                            <Route index element={<PersonalActivityList />} />
+                            <Route
+                                path={":pactivityId"}
+                                element={<PersonalActivityPage />}
+                            />
+                        </Route>
+                        <Route path="/logsport">
+                            <Route index element={<ChooseSport />} />
+                            <Route
+                                path={":activityId"}
+                                element={<LogActivityPage />}
                             />
                         </Route>
                     </Routes>

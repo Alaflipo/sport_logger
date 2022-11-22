@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Activity, User, PersonalActivity
 from .serializers import ActivitySerializer, UserSerializer, PersonalActivitySerializer
+import datetime
 
 # Create your views here.
 
@@ -61,15 +62,31 @@ def get_personal_activity(request, pk):
     return Response(serializer.data)
 
 
+# filters the output on user
+@api_view(['GET'])
+def get_personal_activity_user(request, activ, user):
+    personal_activity = PersonalActivity.objects.filter(
+        person=user, activity=activ).order_by('date')
+    serializer = PersonalActivitySerializer(personal_activity, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def add_personal_activity(request):
     data = request.data
-    activity = PersonalActivity.objects.create(
-        person=data['person'],
-        activity=data['activity'],
+    print(data)
+    person = User.objects.get(id=data['person'])
+    activity = Activity.objects.get(id=data['activity'])
+    date = datetime.datetime.now()
+    if ('' != data['date']):
+        date = data['date']
+    personal_activity = PersonalActivity.objects.create(
+        person=person,
+        activity=activity,
         weight=data['weight'],
+        date=date
     )
-    serializer = PersonalActivitySerializer(activity, many=False)
+    serializer = PersonalActivitySerializer(personal_activity, many=False)
     return Response(serializer.data)
 
 
@@ -82,6 +99,9 @@ def edit_personal_activity(request, pk):
 
     if serializer.is_valid():
         serializer.save()
+    else:
+        print(data)
+        print(serializer.errors)
 
     return Response(serializer.data)
 

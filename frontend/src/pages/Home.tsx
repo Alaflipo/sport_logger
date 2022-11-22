@@ -1,8 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
-
     return (
         <div>
             <p>Welcome user there are a few things you can do here: </p>
@@ -14,9 +13,12 @@ const HomeScreen = () => {
             <Link to={`/users/`}>
                 <p>user list</p>
             </Link>
-            
+            <h3>View the current personal activities here: </h3>
+            <Link to={`/pactiv/`}>
+                <p>pactiv list</p>
+            </Link>
         </div>
     );
-}
+};
 
-export default HomeScreen; 
+export default HomeScreen;

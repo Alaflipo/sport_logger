@@ -2,8 +2,7 @@ import { Button, Stack } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ActivityListItem from "../components/ActivityListItem";
-import { url } from "../constants";
-import { ActivityData } from "./ActivityPage";
+import { ActivityData } from "../DataTypes";
 
 const ActivityList = () => {
     let [activities, setActivities] = useState([]);
@@ -25,7 +24,7 @@ const ActivityList = () => {
 
     return (
         <div>
-            <div className="notes-list">
+            <div>
                 <Stack>
                     {activities.map((activity: ActivityData, index) => (
                         <ActivityListItem
