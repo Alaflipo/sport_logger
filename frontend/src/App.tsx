@@ -13,7 +13,7 @@ import ChooseSport from "./pages/sportlogger/ChooseSport";
 import LogActivityPage from "./pages/sportlogger/LogActivity";
 
 const HeaderStyling: SxProps = {
-    minHeight: "20vh",
+    minHeight: "10vh",
     display: "flex",
     backgroundColor: "primary.main",
     color: "white",
@@ -40,7 +40,7 @@ function App() {
                 <div className="App">
                     <header>
                         <Box sx={HeaderStyling}>
-                            <h1>Welcome to sportslogger</h1>
+                            <h1>LiMo Sport</h1>
                         </Box>
                     </header>
                     <Routes>

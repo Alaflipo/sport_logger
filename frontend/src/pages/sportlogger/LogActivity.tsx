@@ -25,10 +25,6 @@ const HeaderStyling: SxProps = {
     overflowWrap: "break-word",
 };
 
-const PageStyling: SxProps = {
-    maxWidth: "700px",
-};
-
 const LogActivityPage = () => {
     const { activityId } = useParams();
 
@@ -55,7 +51,7 @@ const LogActivityPage = () => {
     };
 
     return (
-        <Box sx={PageStyling}>
+        <Box>
             <Grid container spacing={0} alignItems="center" sx={HeaderStyling}>
                 <Grid item xs={1}>
                     <Tooltip title="back" placement="top">

@@ -162,7 +162,7 @@ const PersonalActivityOverview = (props: PersonalActivityOverviewProps) => {
 
             <Box
                 style={{
-                    width: "400px",
+                    width: "350px",
                     margin: "10px auto",
                     alignContent: "center",
                 }}
@@ -184,8 +184,8 @@ const PersonalActivityOverview = (props: PersonalActivityOverviewProps) => {
                     />
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <MobileDatePicker
-                            label="Date mobile"
-                            inputFormat="MM/DD/YYYY"
+                            label="Date"
+                            inputFormat="DD/MM/YYYY"
                             value={date}
                             onChange={(value) => setDate(value)}
                             renderInput={(params) => <TextField {...params} />}
