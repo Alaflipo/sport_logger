@@ -72,7 +72,7 @@ const ChooseSport = () => {
     return (
         <Box>
             <Stack>
-                <Typography variant="h5">Choose a Activity: </Typography>
+                <Typography variant="h5">Choose an Activity: </Typography>
                 {filteredActivities.map((activitiesType, index) => {
                     return (
                         <Box key={SportTypes[index].label} sx={CardStyling}>
