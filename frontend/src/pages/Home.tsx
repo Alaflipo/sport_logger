@@ -1,6 +1,7 @@
 import { Button, Stack, SxProps, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import meme from "../meme.jpeg";
 
 const TextStyle: SxProps = {
     marginRight: "30px",
@@ -20,8 +21,8 @@ const HomeScreen = () => {
                 </Typography>
                 <img
                     style={{ margin: "20px auto", width: "300px" }}
-                    src={"meme.jpeg"}
-                    srcSet={"meme.jpeg"}
+                    src={meme}
+                    srcSet={meme}
                     alt={"meme"}
                     loading="lazy"
                 />
